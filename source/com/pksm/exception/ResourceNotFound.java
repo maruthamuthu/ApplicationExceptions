@@ -1,18 +1,20 @@
 package com.pksm.exception;
 
-public class ResourceNotFound extends ApplicationException
+import java.net.HttpURLConnection;
+
+public class ResourceNotFound extends ApplicationError
 {
-    private ResourceNotFound(String message)
+    public ResourceNotFound(String message)
     {
-        super(404, message);
+        super(HttpURLConnection.HTTP_NOT_FOUND, message);
     }
 
-    private ResourceNotFound(String message, Object... args)
+    public ResourceNotFound(String message, Object... args)
     {
-        super(404, message, args);
+        super(HttpURLConnection.HTTP_NOT_FOUND, message, args);
     }
 
-    public static void throwException()
+    public static void throwException() throws RuntimeException
     {
         throwException("Resource not found.");
     }

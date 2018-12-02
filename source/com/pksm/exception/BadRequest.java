@@ -1,15 +1,17 @@
 package com.pksm.exception;
 
-public class BadRequest extends ApplicationException
+import java.net.HttpURLConnection;
+
+public class BadRequest extends ApplicationError
 {
-    private BadRequest(String message)
+    public BadRequest(String message)
     {
-        super(400, message);
+        super(HttpURLConnection.HTTP_BAD_REQUEST, message);
     }
 
-    private BadRequest(String message, Object... args)
+    public BadRequest(String message, Object... args)
     {
-        super(400, message, args);
+        super(HttpURLConnection.HTTP_BAD_REQUEST, message, args);
     }
 
     public static void throwException()

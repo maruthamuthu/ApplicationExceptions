@@ -1,15 +1,17 @@
 package com.pksm.exception;
 
-public class InternalError extends ApplicationException
+import java.net.HttpURLConnection;
+
+public class InternalError extends ApplicationError
 {
-    private InternalError(String message)
+    public InternalError(String message)
     {
-        super(500, message);
+        super(HttpURLConnection.HTTP_INTERNAL_ERROR, message);
     }
 
-    private InternalError(String message, Object... args)
+    public InternalError(String message, Object... args)
     {
-        super(500, message, args);
+        super(HttpURLConnection.HTTP_INTERNAL_ERROR, message, args);
     }
 
     public static void throwException()

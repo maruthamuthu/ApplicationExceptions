@@ -2,16 +2,16 @@ package com.pksm.exception;
 
 import java.text.MessageFormat;
 
-public abstract class ApplicationException extends RuntimeException
+public abstract class ApplicationError extends Error
 {
     private int code;
 
-    ApplicationException(int code, String message, Object... args)
+    ApplicationError(int code, String message, Object... args)
     {
         this(code, MessageFormat.format(message, args));
     }
 
-    ApplicationException(int code, String message)
+    ApplicationError(int code, String message)
     {
         super(message);
         this.code = code;
@@ -22,7 +22,8 @@ public abstract class ApplicationException extends RuntimeException
         return code;
     }
 
-    public String getResponse()
+    @Override
+    public String toString()
     {
         StringBuilder response = new StringBuilder();
         response.append('{');
