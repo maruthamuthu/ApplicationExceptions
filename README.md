@@ -1,3 +1,3 @@
 # ApplicationExceptions
 
-Exception Library, that extends a Error.
+Exception Library, that extends the Error.
